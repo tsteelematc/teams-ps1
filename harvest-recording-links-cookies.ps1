@@ -1,8 +1,14 @@
 # $SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringDevOps"
 # $BasePath = "/teams/2026SpringDevOps/Shared Documents"
 
-$SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringAdvFE"
-$BasePath = "/teams/2026SpringAdvFE/Shared Documents"
+# $SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringAdvFE"
+# $BasePath = "/teams/2026SpringAdvFE/Shared Documents"
+
+$SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringDataViz"
+$BasePath = "/teams/2026SpringDataViz/Shared Documents"
+
+# $FedAuth = "REDACTED"
+# $RtFa = "REDACTED"
 
 # $FedAuth = "REDACTED"
 # $RtFa = "REDACTED"
@@ -54,5 +60,5 @@ for ($i = 1; $i -le 16; $i++) {
     }
 }
 
-$results | Export-Csv "2026SpringAdvFEAllWeeksRecordings.csv" -NoTypeInformation
+$results | Export-Csv "2026SpringDataVizAllWeeksRecordings.csv" -NoTypeInformation
 Write-Output "Done."

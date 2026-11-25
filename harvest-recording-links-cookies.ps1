@@ -4,17 +4,26 @@
 # $SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringAdvFE"
 # $BasePath = "/teams/2026SpringAdvFE/Shared Documents"
 
-$SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringDataViz"
-$BasePath = "/teams/2026SpringDataViz/Shared Documents"
+# $SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringDataViz"
+# $BasePath = "/teams/2026SpringDataViz/Shared Documents"
 
 # $FedAuth = "REDACTED"
 # $RtFa = "REDACTED"
 
 # $FedAuth = "REDACTED"
 # $RtFa = "REDACTED"
+
+# $FedAuth = "REDACTED"
+# $RtFa = "REDACTED"
+
+# 2026-fall
+
+$SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026FallMachineLearning"
+$BasePath = "/teams/2026FallMachineLearning/Shared Documents"
 
 $FedAuth = "REDACTED"
 $RtFa = "REDACTED"
+
 
 $handler = New-Object System.Net.Http.HttpClientHandler
 $handler.CookieContainer = New-Object System.Net.CookieContainer
@@ -24,6 +33,20 @@ $handler.CookieContainer.Add($rootUri, (New-Object System.Net.Cookie("FedAuth", 
 $handler.CookieContainer.Add($rootUri, (New-Object System.Net.Cookie("rtFa", $RtFa, "/", $rootUri.Host)))
 
 $client = New-Object System.Net.Http.HttpClient($handler)
+
+# ai to test
+# $response = $client.GetAsync("$SiteUrl/_api/web/title").Result
+# Write-Output "Status: $($response.StatusCode)"
+# $text = $response.Content.ReadAsStringAsync().Result
+# Write-Output $text.Substring(0, [Math]::Min(500, $text.Length))
+
+# $response = $client.GetAsync("$SiteUrl/_api/web/title").Result
+# Write-Output "Status: $($response.StatusCode)"
+# foreach ($h in $response.Headers) { Write-Output "$($h.Key): $($h.Value -join ',')" }
+# $text = $response.Content.ReadAsStringAsync().Result
+# Write-Output "---BODY---"
+# Write-Output $text.Substring(0, [Math]::Min(2000, $text.Length))
+
 
 $results = @()
 
@@ -60,5 +83,5 @@ for ($i = 1; $i -le 16; $i++) {
     }
 }
 
-$results | Export-Csv "2026SpringDataVizAllWeeksRecordings.csv" -NoTypeInformation
+$results | Export-Csv "2026FallMachineLearningAllWeeksRecordings.csv" -NoTypeInformation
 Write-Output "Done."

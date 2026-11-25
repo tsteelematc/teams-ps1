@@ -7,22 +7,23 @@
 # $SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026SpringDataViz"
 # $BasePath = "/teams/2026SpringDataViz/Shared Documents"
 
-# $FedAuth = "REDACTED"
-# $RtFa = "REDACTED"
-
-# $FedAuth = "REDACTED"
-# $RtFa = "REDACTED"
-
-# $FedAuth = "REDACTED"
-# $RtFa = "REDACTED"
-
 # 2026-fall
 
 $SiteUrl = "https://madisoncollege365.sharepoint.com/teams/2026FallMachineLearning"
 $BasePath = "/teams/2026FallMachineLearning/Shared Documents"
 
-$FedAuth = "REDACTED"
-$RtFa = "REDACTED"
+# FedAuth/rtFa are session cookies copied from a logged-in browser (DevTools > Application > Cookies
+# for madisoncollege365.sharepoint.com). They are live credentials - never hardcode or commit them.
+# Set them in the current shell before running this script, e.g. by dot-sourcing a local,
+# gitignored set-spo-cookies.ps1 that does:
+#   $env:SPO_FEDAUTH = "<FedAuth cookie value>"
+#   $env:SPO_RTFA = "<rtFa cookie value>"
+$FedAuth = $env:SPO_FEDAUTH
+$RtFa = $env:SPO_RTFA
+
+if (-not $FedAuth -or -not $RtFa) {
+    throw "Set `$env:SPO_FEDAUTH and `$env:SPO_RTFA (copied from a logged-in browser session) before running this script."
+}
 
 
 $handler = New-Object System.Net.Http.HttpClientHandler
